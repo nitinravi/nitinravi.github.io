@@ -171,7 +171,6 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,19,51) 50%, rgba(1
     transform: translate(-100%, 10%);
     text-align: left;
     width: 100%;
-    padding: 10px 20px 21px 0px;
     color: #ffff;
   }
   .content0{
@@ -181,7 +180,7 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(17,19,51) 50%, rgba(1
     transform: translate(-100%, 10%);
     text-align: left;
     width: 100%;
-    padding: 40px 70px 51px 343px;
+    padding: 0px 242px 0px 343px;
     color: #ffff;
   }
   .content div{
