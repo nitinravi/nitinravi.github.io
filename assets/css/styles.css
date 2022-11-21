@@ -33,7 +33,7 @@
 background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgb(17, 19, 51) 50%, rgba(14,23,69,1) 100%);
     }
 
-    table, td, th {
+  table, td, th {
       border: 1px solid;
       
     }
