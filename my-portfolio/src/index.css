@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Apply custom font globally */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Light mode background */
+.bg-gradient-to-br {
+  background: linear-gradient(to bottom right, #ffffff, #f5f5f5);
+}
+
+/* Dark mode background */
+.dark .bg-gradient-to-br {
+  background: linear-gradient(to bottom right, #020C1B, #0A192F);
+}
+
+.text-light {
+  color: #333;
+}
+
+/* Dark mode text color */
+.dark .text-light {
+  color: #E5E7EB;
+}
+
+/* Dark mode specific text color */
+.text-dark {
+  color: #333;
+}
+
+.dark .text-dark {
+  color: #D1D5DB;
+}
