@@ -24,8 +24,8 @@ const Home = () => {
           className="rounded-full w-32 h-32 object-cover mb-6 shadow-md mx-auto"
         />
         <h1 className="text-4xl font-extrabold mb-4">Hi, I'm Nitin Ravi</h1>
-        <p className="text-lg mb-6 text-gray-400">Mobile and Web App Developer | Product Enthusiast</p>
-        <p className="text-lg mb-6 text-gray-400">SDE Intern @ LogicFlo.ai (Stealth Startup)</p>
+        <p className="text-lg mb-6 text-gray-400">Building at the intersection of AI, code, and business growth</p>
+        <p className="text-lg mb-6 text-gray-400">AI and Business Strategy @ LogicFlo AI</p>
         <div className="flex space-x-6 justify-center">
           <a href="https://github.com/nitinravi" className="hover:text-blue-400 transition-colors">GitHub</a>
           <a href="https://linkedin.com/in/nitin-ravi" className="hover:text-blue-400 transition-colors">LinkedIn</a>
