@@ -1,39 +1,44 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
+import Origin from './components/Origin';
+import Trajectory from './components/Trajectory';
 import Work from './components/Work';
+import Toolkit from './components/Toolkit';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollProgress from './components/ScrollProgress';
+import useSmoothScroll from './hooks/useSmoothScroll';
+
+const getInitialTheme = () => {
+  const stored = localStorage.getItem('theme');
+  if (stored) return stored === 'dark';
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+};
 
 function App() {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(getInitialTheme);
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+  useSmoothScroll();
 
   useEffect(() => {
-    // Enforce black text color in light mode
-    if (!darkMode) {
-      document.body.style.color = 'black';
-    } else {
-      document.body.style.color = 'white';
-    }
+    document.documentElement.classList.toggle('dark', darkMode);
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
-
-
   return (
-    <div className={`${darkMode ? 'dark' : ''} min-h-screen`}>
-      <div className="bg-gradient-to-br from-darkBlue to-darkerBlue dark:bg-gradient-to-br dark:from-darkBlue dark:to-darkerBlue transition-colors duration-300 ease-in-out">
-        <Navbar toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
-        <main className="px-6 md:px-12 lg:px-20">
-          <Home />
-          <Work />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+    <div className="min-h-screen bg-ground text-ink">
+      <ScrollProgress />
+      <Navbar darkMode={darkMode} toggleDarkMode={() => setDarkMode((v) => !v)} />
+      <main>
+        <Home />
+        <Origin />
+        <Trajectory />
+        <Work />
+        <Toolkit />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 }

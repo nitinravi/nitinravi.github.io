@@ -1,39 +1,113 @@
+/* Archivo carries a wdth axis (62–125) — the width range is the point, so the
+   variable build is loaded rather than static cuts. */
+@import '@fontsource-variable/archivo/wdth.css';
+@import '@fontsource/newsreader/latin-400.css';
+@import '@fontsource/newsreader/latin-400-italic.css';
+@import '@fontsource/newsreader/latin-500.css';
+@import '@fontsource/ibm-plex-mono/latin-400.css';
+@import '@fontsource/ibm-plex-mono/latin-500.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* Apply custom font globally */
-html {
-  scroll-behavior: smooth;
+
+@layer base {
+  /* Light set — limestone ground, cool-biased neutrals, cobalt accent. */
+  :root {
+    --ground: 230 228 222;
+    --surface: 240 239 234;
+    --ink: 20 23 27;
+    --muted: 92 98 107;
+    --rule: 200 198 190;
+    --accent: 31 58 201;
+    color-scheme: light;
+  }
+
+  /* Dark set. The accent lifts toward periwinkle so it keeps contrast on a
+     near-black ground instead of collapsing into it. */
+  .dark {
+    --ground: 15 18 22;
+    --surface: 23 27 32;
+    --ink: 233 232 227;
+    --muted: 136 143 152;
+    --rule: 38 43 49;
+    --accent: 125 152 255;
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: auto;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: rgb(var(--ground));
+    color: rgb(var(--ink));
+    font-family: Newsreader, Georgia, serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgb(var(--accent));
+    color: rgb(var(--ground));
+  }
+
+  /* Focus is visible and uses the accent, on both grounds. */
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--ground));
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--rule));
+    border: 3px solid rgb(var(--ground));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(var(--muted));
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--rule)) rgb(var(--ground));
+  }
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
+@layer components {
+  /* The width axis, used as an instrument. Tailwind 3 has no font-stretch
+     utilities, so the two ends of the axis are named here. */
+  .wdth-wide {
+    font-stretch: 115%;
+  }
+  .wdth-cond {
+    font-stretch: 74%;
+  }
+  .wdth-narrow {
+    font-stretch: 88%;
+  }
+
+  /* Mono field label: the recurring unit of a spec sheet. */
+  .field {
+    @apply font-mono text-field uppercase text-muted;
+  }
+
+  /* Tabular figures wherever digits sit in a column. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
-/* Light mode background */
-.bg-gradient-to-br {
-  background: linear-gradient(to bottom right, #ffffff, #f5f5f5);
-}
-
-/* Dark mode background */
-.dark .bg-gradient-to-br {
-  background: linear-gradient(to bottom right, #020C1B, #0A192F);
-}
-
-.text-light {
-  color: #333;
-}
-
-/* Dark mode text color */
-.dark .text-light {
-  color: #E5E7EB;
-}
-
-/* Dark mode specific text color */
-.text-dark {
-  color: #333;
-}
-
-.dark .text-dark {
-  color: #D1D5DB;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
