@@ -21,7 +21,7 @@ const PHASES = [
     when: 'As a student',
     what: 'Build',
     detail:
-      'Discord bots, tutorial projects rebuilt from scratch, open source, and eventually a CS degree, because by then building things properly needed it.',
+      'Discord bots, tutorial projects rebuilt from scratch, hackathons and CTFs, open source, and a CS degree, because by then building things properly needed it.',
   },
   {
     when: 'Now',
